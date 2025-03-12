@@ -1,0 +1,8 @@
+[package]
+name = "image_ascifier"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.32", features = ["derive"] }
+rusty_imager = { git = "https://github.com/J1rk0s/rusty_imager.git", branch = "dev"}
