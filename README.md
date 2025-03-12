@@ -1,5 +1,10 @@
 # Image ascifier
-Ascifies the provided image
+* Ascifies the provided image
+* Images with lot of colors may look distorted
+
+## Supported image types
+* BMP
+
 ## Usage
 ```
 Usage: image_ascifier [OPTIONS] --image-path <IMAGE_PATH> --save-path <SAVE_PATH>
@@ -12,3 +17,12 @@ Options:
   -h, --help                     Print help
   -V, --version                  Print version
 ```
+
+## Showcase
+All ascii images were screenshoted in notepad at almost max zoom
+### Original
+![original](./res/original.bmp)
+### Non inverted
+![non inverted](./res/NonInverted.png)
+### Inverted
+![inverted](./res/Inverted.png)

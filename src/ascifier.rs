@@ -1,29 +1,23 @@
-use std::{fs::File, io::Write};
-
 use rusty_imager::{filters::Grayscale, formats::ImageFormat, image::Image};
 
 use crate::utils;
 
 pub struct Ascifier {
     image_path: String,
-    save_path: String,
     charset: String,
     invert: bool
 }
 
 impl Ascifier {
-    pub fn init(image_path: String, save_path: String, charset: String, invert: bool) -> Self {
-        Self { image_path, save_path, charset, invert }
+    pub fn init(image_path: String, charset: String, invert: bool) -> Self {
+        Self { image_path, charset, invert }
     }
 
-    pub fn ascify(&self) {
+    pub fn ascify(&self) -> String{
         let mut img = Image::from_file(&self.image_path).expect("File not supported");
         img.apply_filter(Grayscale::new());
 
-        let ascified = self.process(&img);
-
-        let mut file = File::create(&self.save_path).expect("Failed to create file");
-        file.write_all(ascified.as_bytes()).expect("Failed to write ascii chars");
+        self.process(&img)
     }
 
     fn process(&self, img: &Image) -> String {

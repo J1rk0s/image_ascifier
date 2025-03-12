@@ -1,3 +1,5 @@
+use std::{fs::File, io::Write};
+
 use ascifier::Ascifier;
 use clap::Parser;
 
@@ -27,6 +29,9 @@ struct Args {
 fn main() {
     let args = Args::parse();
 
-    let convertor = Ascifier::init(args.image_path, args.save_path, args.charset, args.invert);
-    convertor.ascify();
+    let convertor = Ascifier::init(args.image_path, args.charset, args.invert);
+    let ascified = convertor.ascify();
+
+    let mut file = File::create(args.save_path).expect("Failed to create file");
+    file.write_all(ascified.as_bytes()).expect("Failed to write ascii chars");
 }
