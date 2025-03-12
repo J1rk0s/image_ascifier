@@ -2,6 +2,7 @@ use ascifier::Ascifier;
 use clap::Parser;
 
 mod ascifier;
+mod utils;
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
